@@ -13,7 +13,7 @@ namespace CSharpEssentials.Gui.Config
         /// <summary>
         /// Represents the name of the specific theme
         /// </summary>
-        public abstract string ThemeName { get; }
+        public abstract string Name { get; }
         /// <summary>
         /// Represents the back color for <see cref="Control"/>s of the specific theme
         /// </summary>
@@ -32,6 +32,16 @@ namespace CSharpEssentials.Gui.Config
         public abstract Color WindowColor { get; }
         #endregion
 
+        #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="ThemeBase"/> class
+        /// </summary>
+        protected ThemeBase()
+        {
+            Register();
+        }
+        #endregion
+
         #region Public methods
         /// <summary>
         /// Themes specified control and it's child controls
@@ -39,7 +49,18 @@ namespace CSharpEssentials.Gui.Config
         /// <param name="control">The <see cref="Control"/> to be themed</param>
         public void SetTheme(Control control)
         {
-            //TODO: Implement themeing logic
+            control.ForeColor = ForeColor;
+
+            if (control.GetType().Equals(typeof(Form)))
+            {
+                control.BackColor = FormColor;
+                return;
+            }
+            else if (control.GetType().IsSubclassOf(typeof(TextBox)))
+            {
+                control.BackColor = WindowColor;
+            }
+            control.BackColor = BackColor;
         }
 
         /// <summary>
@@ -62,6 +83,19 @@ namespace CSharpEssentials.Gui.Config
         public void SetTheme(Control control, IgnoranceKind ignoranceKind, params Type[] ignoredTypes)
         {
             //TODO: Implement themeing logic
+        }
+
+        /// <summary>
+        /// Gets the name of the specific theme
+        /// </summary>
+        /// <returns>The name of the theme</returns>
+        public override string ToString() => Name;
+        #endregion
+
+        #region Private methods
+        private void Register()
+        {
+            ThemeController.RegisterTheme(this);
         }
         #endregion
     }

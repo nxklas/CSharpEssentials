@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpEssentials.Gui;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,12 @@ using System.Windows.Forms;
 
 namespace CSharpEssentials.Test
 {
-    public partial class Form1 : Form
+    public partial class Form1 : ThemeableForm
     {
-        public Form1()
+        public Form1() : base()
         {
             InitializeComponent();
+            Theme = "DarkTheme";
         }
 
     }

@@ -11,7 +11,7 @@ namespace CSharpEssentials.Gui.Config
         /// <summary>
         /// Represents the name of the specific theme
         /// </summary>
-        public override string ThemeName => "LightTheme";
+        public override string Name => "LightTheme";
         /// <summary>
         /// Represents the back color for <see cref="System.Windows.Forms.Control"/>s of the light mode
         /// </summary>
@@ -28,6 +28,15 @@ namespace CSharpEssentials.Gui.Config
         /// Represents the back color for window-like <see cref="System.Windows.Forms.Control"/>s (e.g. <see cref="System.Windows.Forms.TextBox"/>) of the light mode
         /// </summary>
         public override Color WindowColor => Color.FromKnownColor(KnownColor.Window);
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="LightTheme"/> class
+        /// </summary>
+        public LightTheme() : base()
+        {
+        }
         #endregion
     }
 }
