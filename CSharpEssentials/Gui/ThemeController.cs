@@ -41,6 +41,9 @@ namespace CSharpEssentials.Gui
         #endregion
 
         #region Constructors and singleton getters
+        /// <summary>
+        /// Initializes the static fields of <see cref="ThemeChanged"/> class
+        /// </summary>
         static ThemeController()
         {
             _themes = new();
