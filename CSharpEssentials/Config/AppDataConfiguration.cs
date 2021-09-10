@@ -1,17 +1,17 @@
-﻿using System;
+﻿using CSharpEssentials.Diagnostics;
+using CSharpEssentials.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
-
-//TODO: Write appdata read / write logic
 
 namespace CSharpEssentials.Config
 {
     /// <summary>
     /// Represents a config that writes to / reads from the AppData folder
     /// </summary>
+    /// <remarks>NOTE: Untested</remarks>
     public sealed class AppDataConfiguration : DirectoryConfiguration
     {
         #region Properties
@@ -44,7 +44,35 @@ namespace CSharpEssentials.Config
         /// <returns>An <see cref="IImmutableList{T}"/> of all read values and it's keys</returns>
         public override IImmutableList<KeyValuePair<ConfigKey, string>> Read(out IImmutableList<string> diagnostics, params ConfigKey[] keys)
         {
-            throw new NotImplementedException();
+            IList<KeyValuePair<ConfigKey, string>> values = new List<KeyValuePair<ConfigKey, string>>();
+            DiagnosticBag diagnosticBag = DiagnosticBag.Builder.Build();
+            string text = System.IO.File.ReadAllText(Path);
+            string[] splittedText = text.Split(Environment.NewLine);
+
+            foreach (ConfigKey key in keys)
+            {
+                bool found = false;
+
+                foreach (string currentLine in splittedText)
+                {
+                    string[] splittedCurrentLine = currentLine.Split('=');
+
+                    if (splittedCurrentLine[0].Trim().ToLower() == key.ToString().ToLower())
+                    {
+                        found = true;
+                        values.Add(new KeyValuePair<ConfigKey, string>(key, splittedCurrentLine[1].Trim()));
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    diagnosticBag.Add_MissingValue(key.ToString());
+                }
+            }
+
+            diagnostics = diagnosticBag.Diagnostics;
+            return values.ToImmutableList();
         }
 
         /// <summary>
@@ -55,7 +83,31 @@ namespace CSharpEssentials.Config
         /// <returns>The value of <paramref name="key"/></returns>
         public override string Read(out IImmutableList<string> diagnostics, ConfigKey key)
         {
-            throw new NotImplementedException();
+            string value = null;
+            DiagnosticBag diagnosticBag = DiagnosticBag.Builder.Build();
+            string text = System.IO.File.ReadAllText(Path);
+            string[] splittedText = text.Split(Environment.NewLine);
+            bool found = false;
+
+            foreach (string currentLine in splittedText)
+            {
+                string[] splittedCurrentLine = currentLine.Split('=');
+
+                if (splittedCurrentLine[0].Trim().ToLower() == key.ToString().ToLower())
+                {
+                    found = true;
+                    value = splittedCurrentLine[1].Trim();
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                diagnosticBag.Add_MissingValue(key.ToString());
+            }
+
+            diagnostics = diagnosticBag.Diagnostics;
+            return value;
         }
 
         /// <summary>
@@ -64,7 +116,14 @@ namespace CSharpEssentials.Config
         /// <param name="values">The values to write</param>
         public override void Write(params KeyValuePair<ConfigKey, string>[] values)
         {
-            throw new NotImplementedException();
+            StringBuilder stringBuilder = new();
+
+            foreach (KeyValuePair<ConfigKey, string> current in values)
+            {
+                stringBuilder.Append($"{current.Key} = {current.Value + Environment.NewLine}");
+            }
+
+            File.WriteAllText(Path, stringBuilder.ToString());
         }
 
         /// <summary>
@@ -74,12 +133,28 @@ namespace CSharpEssentials.Config
         /// <param name="value">The value to write</param>
         public override void Write(ConfigKey key, string value)
         {
-            throw new NotImplementedException();
+            ConfigKey[] keys = ReflectiveEnumerator.GetEnumerableOfType<ConfigKey>(null) as ConfigKey[];
+            IImmutableList<KeyValuePair<ConfigKey, string>> values = Read(out IImmutableList<string> diagnostics, keys);
+            bool found = false;
+
+            foreach (KeyValuePair<ConfigKey, string> current in values)
+            {
+                foreach (KeyValuePair<ConfigKey, string> cur in values)
+                {
+                    if (current.Equals(cur))
+                    {
+                        found = true;
+                    }
+                }
+            }
+
+            if (!found)
+            {
+                values.Add(new KeyValuePair<ConfigKey, string>(key, value));
+            }
+
+            Write(values.ToKeyValuePairArray());
         }
-        #endregion
-
-        #region Private methods
-
         #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace CSharpEssentials.Config
     /// <summary>
     /// Represents a config that writes to / reads from the Windows Registry
     /// </summary>
-    /// <remarks>NOTO: Untested</remarks>
+    /// <remarks>NOTE: Untested</remarks>
     [SupportedOSPlatform("windows")]
     public sealed class RegistryConfiguration : IConfigurable
     {
@@ -37,7 +37,7 @@ namespace CSharpEssentials.Config
         public IImmutableList<KeyValuePair<ConfigKey, string>> Read(out IImmutableList<string> diagnostics, params ConfigKey[] keys)
         {
             IList<KeyValuePair<ConfigKey, string>> values = new List<KeyValuePair<ConfigKey, string>>();
-            DiagnosticBag _diagnostics = DiagnosticBag.Builder.Build();
+            DiagnosticBag diagnosticBag = DiagnosticBag.Builder.Build();
 
             foreach (ConfigKey current in keys)
             {
@@ -45,14 +45,14 @@ namespace CSharpEssentials.Config
 
                 if (value == null)
                 {
-                    _diagnostics.Add_MissingValue(current.ToString());
+                    diagnosticBag.Add_MissingValue(current.ToString());
                     continue;
                 }
 
                 values.Add(new KeyValuePair<ConfigKey, string>(current, value));
             }
 
-            diagnostics = _diagnostics.Diagnostics;
+            diagnostics = diagnosticBag.Diagnostics;
             return values.ToImmutableList();
         }
 
@@ -65,14 +65,14 @@ namespace CSharpEssentials.Config
         public string Read(out IImmutableList<string> diagnostics, ConfigKey key)
         {
             string value = GetValue(_subKey, key.ToString()).ToString();
-            DiagnosticBag _diagnostics = DiagnosticBag.Builder.Build();
+            DiagnosticBag diagnosticBag = DiagnosticBag.Builder.Build();
 
             if (value == null)
             {
-                _diagnostics.Add_MissingValue(key.ToString());
+                diagnosticBag.Add_MissingValue(key.ToString());
             }
 
-            diagnostics = _diagnostics.Diagnostics;
+            diagnostics = diagnosticBag.Diagnostics;
             return value;
         }
 
