@@ -34,7 +34,7 @@ namespace CSharpEssentials.Gui.Config
         /// <summary>
         /// Initializes a new instance of <see cref="DarkTheme"/> class
         /// </summary>
-        public DarkTheme()
+        public DarkTheme() : base()
         {
         }
         #endregion

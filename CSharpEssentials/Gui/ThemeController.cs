@@ -37,11 +37,16 @@ namespace CSharpEssentials.Gui
 
         #region Fields
         private static ThemeController _current;
-        private static Dictionary<string, ThemeBase> _themes =new();
+        private static Dictionary<string, ThemeBase> _themes;
         private ThemeBase _theme;
         #endregion
 
         #region Constructors and singleton getters
+        static ThemeController()
+        {
+            _themes = new();
+        }
+
         /// <summary>
         /// Initializes a new instance of <see cref="ThemeController"/> class and sets the theme to <see cref="LightTheme"/>
         /// </summary>
@@ -60,7 +65,7 @@ namespace CSharpEssentials.Gui
         }
 
         /// <summary>
-        /// Gits the <see cref="ThemeController"/> singleton with the current theme or with default theme (<see cref="LightTheme"/>) if no singleton exists yet
+        /// Gets the <see cref="ThemeController"/> singleton with the current theme or with default theme (<see cref="LightTheme"/>) if no singleton exists yet
         /// </summary>
         /// <returns>The <see cref="ThemeController"/> singleton</returns>
         public static ThemeController Get()

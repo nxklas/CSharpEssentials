@@ -1,10 +1,9 @@
 ﻿using CSharpEssentials.Events;
 using CSharpEssentials.Gui.Config;
 using CSharpEssentials.Gui.Helpers;
-using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace CSharpEssentials.Gui
+namespace CSharpEssentials.Gui.Forms
 {
     /// <summary>
     /// Represents a <see cref="Form"/> with themeing support

@@ -13,11 +13,11 @@ namespace CSharpEssentials.Helpers
     public static class ReflectiveEnumerator
     {
         /// <summary>
-        /// Gets all derived classes from base <see cref="Type"/> <typeparamref name="T"/> and initializes them
+        /// Gets all derived classes from base type <typeparamref name="T"/> and initializes them
         /// </summary>
-        /// <typeparam name="T">The base <see cref="Type"/></typeparam>
+        /// <typeparam name="T">The base type</typeparam>
         /// <param name="constructorArgs">Arguments of the constructor which classes must implement or <see langword="null"/> if no arguments are in the constructor</param>
-        /// <returns>A <see cref="IEnumerable{T}"/> which contains all classes which inherit from <typeparamref name="T"/> and whose constructors exhibit <paramref name="constructorArgs"/>' content</returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> which contains all classes which inherit from <typeparamref name="T"/> and whose constructors exhibit <paramref name="constructorArgs"/>' content</returns>
         public static IEnumerable<T> GetEnumerableOfType<T>(params object[] constructorArgs) where T : class
         {
             IList<T> spottedClasses = new List<T>();
