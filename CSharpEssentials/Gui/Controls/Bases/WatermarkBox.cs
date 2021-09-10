@@ -16,7 +16,6 @@ namespace CSharpEssentials.Gui.Controls.Bases
         /// <summary>
         /// The text of the watermark
         /// </summary>
-        /// <returns>The watermark text</returns>
         [Description("The text of the watermark"),Category("Appearance")]
         public string Watermark
         {

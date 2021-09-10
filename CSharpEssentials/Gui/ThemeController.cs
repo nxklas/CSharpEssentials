@@ -19,7 +19,6 @@ namespace CSharpEssentials.Gui
         /// <summary>
         /// Represents the theme
         /// </summary>
-        /// <returns>The current theme</returns>
         public ThemeBase Theme
         {
             get => _theme;
