@@ -100,18 +100,30 @@ namespace CSharpEssentials.Gui
 
         #region Public methods
         /// <summary>
+        /// Gets all themes
+        /// </summary>
+        /// <returns>All recognized themes</returns>
+        public static IEnumerable<ThemeBase> GetThemes()
+        {
+            return ReflectiveEnumerator.GetEnumerableOfType<ThemeBase>(null);
+        }
+
+        /// <summary>
         /// Registers <paramref name="theme"/>
         /// </summary>
         /// <param name="theme">The theme to register</param>
         /// <exception cref="ArgumentException">If <see cref="ThemeBase.Name"/> is already registered</exception>
         public static void RegisterTheme(ThemeBase theme)
         {
-            if (_themes.ContainsKey(theme.Name))
-            {
-                throw new ArgumentException($"Theme '{theme}' is already registered", nameof(theme));
-            }
+            //if (_themes.ContainsKey(theme.Name))
+            //{
+            //    throw new ArgumentException($"Theme '{theme.Name}' is already registered", nameof(theme));
+            //}
 
-            _themes.Add(theme.Name,theme);
+            if (!_themes.ContainsKey(theme.Name))
+            {
+                _themes.Add(theme.Name, theme);
+            }
         }
 
         /// <summary>

@@ -29,7 +29,7 @@ namespace CSharpEssentials.Gui.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="ThemeableTextBox"/> class with default watermark ("Search")
         /// </summary>
-        public ThemeableWatermarkBox():this("Search")
+        public ThemeableWatermarkBox() : this("Search")
         {
 
         }
@@ -41,6 +41,7 @@ namespace CSharpEssentials.Gui.Controls
         public ThemeableWatermarkBox(string watermarkText) : base(watermarkText)
         {
             _themeController = ThemeController.Get();
+            _themeController.ThemeChanged += (sender, e) => OnThemeChanged(sender, e);
         }
         #endregion
 

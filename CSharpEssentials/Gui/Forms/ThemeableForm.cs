@@ -31,7 +31,11 @@ namespace CSharpEssentials.Gui.Forms
         #endregion
 
         #region Fields
-        private ThemeController _themeController;
+        /// <summary>
+        /// Represents form's <see cref="ThemeController"/>
+        /// </summary>
+        /// <returns>The <see cref="ThemeController"/></returns>
+        protected ThemeController _themeController;
         #endregion
 
         #region Constructors

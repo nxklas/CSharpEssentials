@@ -15,6 +15,10 @@ namespace CSharpEssentials.Gui.Config
         /// </summary>
         public abstract string Name { get; }
         /// <summary>
+        /// Represents the friendly name of the specific theme
+        /// </summary>
+        public abstract string FriendlyName { get; }
+        /// <summary>
         /// Represents the back color for <see cref="Control"/>s of the specific theme
         /// </summary>
         public abstract Color BackColor { get; }
@@ -51,7 +55,7 @@ namespace CSharpEssentials.Gui.Config
         {
             control.ForeColor = ForeColor;
 
-            if (control.GetType().Equals(typeof(Form)))
+            if (control.GetType().IsSubclassOf(typeof(Form)))
             {
                 control.BackColor = FormColor;
                 return;
@@ -59,6 +63,7 @@ namespace CSharpEssentials.Gui.Config
             else if (control.GetType().IsSubclassOf(typeof(TextBox)))
             {
                 control.BackColor = WindowColor;
+                return;
             }
             control.BackColor = BackColor;
         }

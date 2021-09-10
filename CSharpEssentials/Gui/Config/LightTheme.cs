@@ -9,9 +9,13 @@ namespace CSharpEssentials.Gui.Config
     {
         #region Properties
         /// <summary>
-        /// Represents the name of the specific theme
+        /// Represents the name of the light theme
         /// </summary>
         public override string Name => "LightTheme";
+        /// <summary>
+        /// Represents the name of the light theme
+        /// </summary>
+        public override string FriendlyName => "Light";
         /// <summary>
         /// Represents the back color for <see cref="System.Windows.Forms.Control"/>s of the light mode
         /// </summary>
