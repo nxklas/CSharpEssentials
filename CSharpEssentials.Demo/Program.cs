@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CSharpEssentials.Test
+namespace CSharpEssentials.Demo
 {
     /// <summary>
     /// Provides the main methods for this application
@@ -17,7 +17,10 @@ namespace CSharpEssentials.Test
         [STAThread]
         private static void Main()
         {
-
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new DemoForm());
         }
     }
 }

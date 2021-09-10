@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\mad_prozessors\Documents\Schule\APIs\CSharpEssentials\CSharpEssentials.Demo\bin\Debug\net5.0-windows\CSharpEssentials.Demo.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\mad_prozessors\Documents\Schule\APIs\CSharpEssentials\CSharpEssentials.Demo\bin\Release\net5.0-windows\CSharpEssentials.Demo.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpEssentials\CSharpEssentials.csproj" />
+  </ItemGroup>
+
+</Project>
