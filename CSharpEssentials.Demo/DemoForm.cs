@@ -1,4 +1,6 @@
-﻿using CSharpEssentials.Gui;
+﻿using CSharpEssentials.Config;
+using CSharpEssentials.Demo.Config;
+using CSharpEssentials.Gui;
 using CSharpEssentials.Gui.Config;
 using CSharpEssentials.Gui.Forms;
 using System;
@@ -18,12 +20,15 @@ namespace CSharpEssentials.Demo
     /// </summary>
     internal sealed partial class DemoForm : ThemeableForm
     {
+        ConfigManager _config;
+
         /// <summary>
         /// Initializes a new instance of <see cref="DemoForm"/> class
         /// </summary>
         public DemoForm()
         {
             InitializeComponent();
+            _config = new ConfigManager(new AppDataConfiguration(AppManager.APP_NAME));
             comboBox1.DataSource = ThemeController.GetThemes();
         }
 
@@ -33,6 +38,7 @@ namespace CSharpEssentials.Demo
 
             //comboBox1 needs an extra theme change call bacause i have not implemented a native themeable version of it yet
             _themeController.Theme.SetTheme(comboBox1);
+            _config.Theme = _themeController.Theme;
         }
     }
 }

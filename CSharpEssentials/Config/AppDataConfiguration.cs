@@ -21,10 +21,6 @@ namespace CSharpEssentials.Config
         protected override string Path => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + AppName + FileName;
         #endregion
 
-        #region Fields
-
-        #endregion
-
         #region Constructors
         /// <summary>
         /// Initializes a new instance of <see cref="AppDataConfiguration"/> class
@@ -44,9 +40,12 @@ namespace CSharpEssentials.Config
         /// <returns>An <see cref="IImmutableList{T}"/> of all read values and it's keys</returns>
         public override IImmutableList<KeyValuePair<ConfigKey, string>> Read(out IImmutableList<string> diagnostics, params ConfigKey[] keys)
         {
+            if (!File.Exists(Path))
+                File.Create(Path);
+
             IList<KeyValuePair<ConfigKey, string>> values = new List<KeyValuePair<ConfigKey, string>>();
             DiagnosticBag diagnosticBag = DiagnosticBag.Builder.Build();
-            string text = System.IO.File.ReadAllText(Path);
+            string text = File.ReadAllText(Path);
             string[] splittedText = text.Split(Environment.NewLine);
 
             foreach (ConfigKey key in keys)
@@ -66,9 +65,7 @@ namespace CSharpEssentials.Config
                 }
 
                 if (!found)
-                {
                     diagnosticBag.Add_MissingValue(key.ToString());
-                }
             }
 
             diagnostics = diagnosticBag.Diagnostics;
@@ -83,9 +80,12 @@ namespace CSharpEssentials.Config
         /// <returns>The value of <paramref name="key"/></returns>
         public override string Read(out IImmutableList<string> diagnostics, ConfigKey key)
         {
+            if (!File.Exists(Path))
+                File.Create(Path);
+
             string value = null;
             DiagnosticBag diagnosticBag = DiagnosticBag.Builder.Build();
-            string text = System.IO.File.ReadAllText(Path);
+            string text = File.ReadAllText(Path);
             string[] splittedText = text.Split(Environment.NewLine);
             bool found = false;
 
@@ -102,9 +102,7 @@ namespace CSharpEssentials.Config
             }
 
             if (!found)
-            {
                 diagnosticBag.Add_MissingValue(key.ToString());
-            }
 
             diagnostics = diagnosticBag.Diagnostics;
             return value;
@@ -119,9 +117,10 @@ namespace CSharpEssentials.Config
             StringBuilder stringBuilder = new();
 
             foreach (KeyValuePair<ConfigKey, string> current in values)
-            {
                 stringBuilder.Append($"{current.Key} = {current.Value + Environment.NewLine}");
-            }
+
+            if (!File.Exists(Path))
+                File.Create(Path);
 
             File.WriteAllText(Path, stringBuilder.ToString());
         }
@@ -133,25 +132,22 @@ namespace CSharpEssentials.Config
         /// <param name="value">The value to write</param>
         public override void Write(ConfigKey key, string value)
         {
-            ConfigKey[] keys = ReflectiveEnumerator.GetEnumerableOfType<ConfigKey>(null) as ConfigKey[];
-            IImmutableList<KeyValuePair<ConfigKey, string>> values = Read(out IImmutableList<string> diagnostics, keys);
+            var keys = ReflectiveEnumerator.GetEnumerableOfType<ConfigKey>(null);
+            IImmutableList<KeyValuePair<ConfigKey, string>> values = Read(out IImmutableList<string> diagnostics, keys as ConfigKey[]);
+            KeyValuePair<ConfigKey, string> keyValuePair = new(key, value);
             bool found = false;
 
             foreach (KeyValuePair<ConfigKey, string> current in values)
             {
-                foreach (KeyValuePair<ConfigKey, string> cur in values)
-                {
-                    if (current.Equals(cur))
-                    {
-                        found = true;
-                    }
-                }
+                if (current.Key == null || current.Value == null)
+                    continue;
+
+                if (current.Equals(keyValuePair))
+                    found = true;
             }
 
             if (!found)
-            {
                 values.Add(new KeyValuePair<ConfigKey, string>(key, value));
-            }
 
             Write(values.ToKeyValuePairArray());
         }
