@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpEssentials.Diagnostics\CSharpEssentials.Diagnostics.csproj" />
+    <ProjectReference Include="..\CSharpEssentials.Helpers\CSharpEssentials.Helpers.csproj" />
+  </ItemGroup>
+
+</Project>

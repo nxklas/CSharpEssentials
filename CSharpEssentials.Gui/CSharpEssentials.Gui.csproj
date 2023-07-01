@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<UseWindowsForms>true</UseWindowsForms>
+	<IsPublishable>True</IsPublishable>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpEssentials.Events\CSharpEssentials.Events.csproj" />
+    <ProjectReference Include="..\CSharpEssentials.Helpers\CSharpEssentials.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\Bases\WatermarkBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ThemableWatermarkBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Forms\ThemableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

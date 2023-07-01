@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpEssentials.Config\CSharpEssentials.Config.csproj" />
+    <ProjectReference Include="..\CSharpEssentials.Gui\CSharpEssentials.Gui.csproj" />
+  </ItemGroup>
+
+</Project>
