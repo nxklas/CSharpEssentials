@@ -4,7 +4,7 @@ using System.Windows.Forms;
 namespace CSharpEssentials.Gui
 {
     /// <summary>
-    /// Represents the base interface for themeable <see cref="Control"/>s
+    /// Represents the base interface for themable <see cref="Control"/>s
     /// </summary>
     public interface IThemable
     {
