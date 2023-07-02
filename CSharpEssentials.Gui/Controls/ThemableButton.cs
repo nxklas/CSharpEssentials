@@ -7,7 +7,7 @@ namespace CSharpEssentials.Gui
         #region Constructors
         public ThemableButton() : base()
         {
-            ThemeController = Parent is IThemable themable? themable.ThemeController:ThemeController.Instance;
+            ThemeController = Parent is IThemable themable ? themable.ThemeController : ThemeController.Instance;
             ThemeController.ThemeChanged += OnThemeChanged!;
         }
 

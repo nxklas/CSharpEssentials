@@ -29,105 +29,80 @@ namespace CSharpEssentials.Demo
         /// </summary>
         private void InitializeComponent()
         {
-            CSharpEssentials.Gui.ThemeController themeController1 = new CSharpEssentials.Gui.ThemeController();
-            CSharpEssentials.Gui.DarkTheme darkTheme1 = new CSharpEssentials.Gui.DarkTheme();
-            this.themeableTextBox1 = new CSharpEssentials.Gui.ThemableTextBox();
-            this.themeableWatermarkBox1 = new CSharpEssentials.Gui.ThemableWatermarkBox();
-            this.comboBox1 = new CSharpEssentials.Gui.ThemableComboBox();
-            this.button1 = new CSharpEssentials.Gui.ThemableButton();
-            this.themableButton1 = new CSharpEssentials.Gui.ThemableButton();
-            this.listBox1 = new CSharpEssentials.Gui.ThemableListBox();
-            this.SuspendLayout();
+            themeableTextBox1 = new Gui.ThemableTextBox();
+            themeableWatermarkBox1 = new Gui.ThemableWatermarkBox();
+            comboBox1 = new Gui.ThemableComboBox();
+            listBox1 = new Gui.ThemableListBox();
+            themableButton2 = new Gui.ThemableButton();
+            SuspendLayout();
             // 
             // themeableTextBox1
             // 
-            this.themeableTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.themeableTextBox1.ForeColor = System.Drawing.Color.White;
-            this.themeableTextBox1.Location = new System.Drawing.Point(564, 415);
-            this.themeableTextBox1.Name = "themeableTextBox1";
-            this.themeableTextBox1.Size = new System.Drawing.Size(224, 23);
-            this.themeableTextBox1.TabIndex = 1;
-            themeController1.Theme = darkTheme1;
-            this.themeableTextBox1.ThemeController = themeController1;
+            themeableTextBox1.BackColor = System.Drawing.Color.FromArgb(54, 54, 54);
+            themeableTextBox1.ForeColor = System.Drawing.Color.White;
+            themeableTextBox1.Location = new System.Drawing.Point(564, 415);
+            themeableTextBox1.Name = "themeableTextBox1";
+            themeableTextBox1.Size = new System.Drawing.Size(224, 23);
+            themeableTextBox1.TabIndex = 1;
             // 
             // themeableWatermarkBox1
             // 
-            this.themeableWatermarkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.themeableWatermarkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.themeableWatermarkBox1.ForeColor = System.Drawing.Color.White;
-            this.themeableWatermarkBox1.Location = new System.Drawing.Point(12, 96);
-            this.themeableWatermarkBox1.Name = "themeableWatermarkBox1";
-            this.themeableWatermarkBox1.Size = new System.Drawing.Size(224, 23);
-            this.themeableWatermarkBox1.TabIndex = 2;
-            this.themeableWatermarkBox1.ThemeController = themeController1;
-            this.themeableWatermarkBox1.Watermark = "Search";
+            themeableWatermarkBox1.BackColor = System.Drawing.Color.FromArgb(54, 54, 54);
+            themeableWatermarkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            themeableWatermarkBox1.ForeColor = System.Drawing.Color.White;
+            themeableWatermarkBox1.Location = new System.Drawing.Point(12, 96);
+            themeableWatermarkBox1.Name = "themeableWatermarkBox1";
+            themeableWatermarkBox1.Size = new System.Drawing.Size(224, 23);
+            themeableWatermarkBox1.TabIndex = 2;
+            themeableWatermarkBox1.Watermark = "Search";
             // 
             // comboBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.ThemeController = themeController1;
-            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(530, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 57);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.ThemeController = themeController1;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // themableButton1
-            // 
-            this.themableButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.themableButton1.ForeColor = System.Drawing.Color.White;
-            this.themableButton1.Location = new System.Drawing.Point(530, 118);
-            this.themableButton1.Name = "themableButton1";
-            this.themableButton1.Size = new System.Drawing.Size(111, 69);
-            this.themableButton1.TabIndex = 5;
-            this.themableButton1.Text = "themableButton1";
-            this.themableButton1.ThemeController = themeController1;
-            this.themableButton1.UseVisualStyleBackColor = false;
+            comboBox1.BackColor = System.Drawing.Color.FromArgb(54, 54, 54);
+            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox1.ForeColor = System.Drawing.Color.White;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new System.Drawing.Point(12, 12);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new System.Drawing.Size(121, 23);
+            comboBox1.TabIndex = 3;
+            comboBox1.TextChanged += comboBox1_TextChanged;
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(212, 211);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 94);
-            this.listBox1.TabIndex = 6;
-            this.listBox1.ThemeController = themeController1;
+            listBox1.BackColor = System.Drawing.Color.FromArgb(54, 54, 54);
+            listBox1.ForeColor = System.Drawing.Color.White;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new System.Drawing.Point(212, 211);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new System.Drawing.Size(120, 94);
+            listBox1.TabIndex = 6;
+            // 
+            // themableButton2
+            // 
+            themableButton2.Location = new System.Drawing.Point(118, 369);
+            themableButton2.Name = "themableButton2";
+            themableButton2.Size = new System.Drawing.Size(75, 23);
+            themableButton2.TabIndex = 7;
+            themableButton2.Text = "themableButton2";
+            themableButton2.UseVisualStyleBackColor = true;
             // 
             // DemoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.themableButton1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.themeableWatermarkBox1);
-            this.Controls.Add(this.themeableTextBox1);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "DemoForm";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(themableButton2);
+            Controls.Add(listBox1);
+            Controls.Add(comboBox1);
+            Controls.Add(themeableWatermarkBox1);
+            Controls.Add(themeableTextBox1);
+            ForeColor = System.Drawing.SystemColors.ControlText;
+            Name = "DemoForm";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -135,9 +110,8 @@ namespace CSharpEssentials.Demo
         private Gui.ThemableTextBox themeableTextBox1;
         private Gui.ThemableWatermarkBox themeableWatermarkBox1;
         private Gui.ThemableComboBox comboBox1;
-        private CSharpEssentials.Gui.ThemableButton button1;
-        private Gui.ThemableButton themableButton1;
-        private CSharpEssentials.Gui.ThemableListBox listBox1;
+        private Gui.ThemableListBox listBox1;
+        private Gui.ThemableButton themableButton2;
     }
 }
 

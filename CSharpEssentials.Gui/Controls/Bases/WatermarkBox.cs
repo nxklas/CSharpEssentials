@@ -11,30 +11,6 @@ namespace CSharpEssentials.Gui
     [Description("A textbox with watermark")]
     public class WatermarkBox : TextBox
     {
-<<<<<<< Updated upstream:CSharpEssentials/Gui/Controls/Bases/WatermarkBox.cs
-        #region Properties
-        /// <summary>
-        /// The text of the watermark
-        /// </summary>
-        /// <returns>The watermark text</returns>
-        [Description("The text of the watermark"),Category("Appearance")]
-        public string Watermark
-        {
-            get => _watermark.Text;
-            set
-            {
-                if (_watermark.Text != value)
-                {
-                    string oldWatermark = _watermark.Text;
-                    _watermark.Text = value;
-                    WatermarkChanged?.Invoke(this, new PropertyChangedEventArgs<string>(oldWatermark, _watermark.Text));
-                }
-            }
-        }
-        #endregion
-
-=======
->>>>>>> Stashed changes:CSharpEssentials.Gui/Controls/Bases/WatermarkBox.cs
         #region Fields
         private Label _watermark;
         #endregion
